@@ -2,13 +2,12 @@ name: pyinstaller
 
 on: [push]
 
-strategy:
-    matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
 jobs:
     build:
         runs-on: ${{ matrix.os }}
-        
+        strategy:
+            matrix:
+                os: [windows-latest, ubuntu-latest, macos-latest]
         steps:
         - uses: actions/checkout@v1
         - name: Set Up Python 3.7
